@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /backups/
+Disallow: /reference/
+Disallow: /graphify-out/
+Disallow: /src/
+Disallow: /index.backup.html
+Disallow: /index.before-
+Disallow: /ARYAN_PAGARIA_PORTFOLIO_MASTER_PLAN.md

@@ -1,0 +1,176 @@
+/*
+ * ChainLabs Portfolio
+ * Global initialization layer.
+ *
+ * Responsibilities:
+ * - Font loading
+ * - Global rendering normalization
+ * - Preloader state
+ * - Page visibility state
+ * - Reduced-motion handling
+ */
+
+@font-face {
+    font-family: "LABS Amiga";
+    src: url("/assets/fonts/LABSAmiga-Regular.woff") format("woff");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Roboto Mono";
+    src: url("/assets/fonts/RobotoMono-Regular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+:root {
+    --chainlabs-orange: #ff7120;
+    --chainlabs-black: #000000;
+    --chainlabs-white: #ffffff;
+}
+
+html {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 100%;
+    background: var(--chainlabs-black);
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow-x: hidden;
+    background: var(--chainlabs-black);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+picture,
+svg,
+canvas,
+video {
+    display: block;
+    max-width: 100%;
+}
+
+img,
+video {
+    height: auto;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+a {
+    color: inherit;
+}
+
+::selection {
+    background: var(--chainlabs-orange);
+    color: var(--chainlabs-white);
+}
+
+::-moz-selection {
+    background: var(--chainlabs-orange);
+    color: var(--chainlabs-white);
+}
+
+/*
+ * Prevent the page from appearing underneath the
+ * initialization transition before JavaScript has
+ * completed its first render.
+ */
+
+html.chainlabs-loading body {
+    overflow: hidden;
+}
+
+html.chainlabs-loading .page-transition-container {
+    visibility: visible;
+}
+
+html.chainlabs-ready body {
+    overflow-x: hidden;
+}
+
+/*
+ * The Webflow page-transition markup already exists
+ * in index.html. We control its initial state here.
+ */
+
+.page-transition-container {
+    visibility: visible;
+}
+
+/*
+ * Accessibility.
+ */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        animation-delay: 0ms !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+:root {
+    --chainlabs-font-display: "LABS Amiga", monospace;
+    --chainlabs-font-mono: "Roboto Mono", monospace;
+}
+
+#preloader,
+#preloader .zero-text,
+#preloader .zero-text span {
+    font-family: var(--chainlabs-font-display);
+    font-weight: 400;
+    font-style: normal;
+    font-synthesis: none;
+}
+
+#preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+}
+
+#preloader .zero-text {
+    font-family: var(--chainlabs-font-display);
+}
+
+
